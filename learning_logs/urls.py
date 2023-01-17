@@ -6,4 +6,6 @@ app_name = 'learning_logs'
 urlpatterns = [
     #main site
     path('', views.index, name='index'),
+    #all topics
+path('topics/', views.topics, name='topics'),
 ]
