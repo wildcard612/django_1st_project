@@ -4,12 +4,12 @@
 
   <p>Topics</p>
 
-  <url>
+  <ul>
       {% for topic in topics %}
-      <li>{{ topic }}</li>
+        <li>{{ topic }}</li>
       {% empty %}
         <li>No topics right now</li>
       {% endfor %}
-  </url>
+  </ul>
 
 {% endblock content %}
