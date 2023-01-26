@@ -20,8 +20,7 @@ def topics(request):
 def topic(request, topic_id):
     """show topic and related entries"""
     topic = Topic.objects.get(id=topic_id)
-    if topic.owner != request.user:
-        raise Http404
+    check_topic_owner(topic, request)
 
     entries = topic.entry_set.order_by('-date_added')
     context = {'topic': topic, 'entries': entries}
@@ -66,8 +65,7 @@ def new_entry(request, topic_id):
 def edit_entry(request, entry_id):
     entry = Entry.objects.get(id=entry_id)
     topic = entry.topic
-    if topic.owner != request.user:
-        raise Http404
+    check_topic_owner(topic, request)
 
     if request.method != 'POST':
         form = EntryForm(instance=entry)
@@ -79,3 +77,7 @@ def edit_entry(request, entry_id):
 
     context = {'entry': entry, "topic": topic, 'form': form}
     return render(request, 'learning_logs/edit_entry.html', context)
+
+def check_topic_owner(topic, request):
+    if topic.owner != request.user:
+        raise Http404
