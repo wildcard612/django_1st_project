@@ -36,7 +36,7 @@ INSTALLED_APPS = [
     'users',
 
     # other comp apps
-    'bootstrap4'
+    'bootstrap4',
 
     # django apps
     'django.contrib.admin',
