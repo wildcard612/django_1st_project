@@ -72,6 +72,7 @@ def edit_entry(request, entry_id):
     else:
         form = EntryForm(instance=entry, data=request.POST)
         if form.is_valid():
+            check_topic_owner(topic, request)
             form.save()
             return redirect('learning_logs:topic', topic_id=topic.id)
 
