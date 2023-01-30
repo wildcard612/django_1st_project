@@ -1,6 +1,12 @@
 {% extends "learning_logs/base.html" %}
-{% block content %}
 
-<p>Learning Log helping make progress in learning anything</p>
+{% block page_header %}
+    <div class='jumbotron'>
+        <hl class="display-3">Check progress</hl>
 
-{% endblock content %}
+        <p class="lead"> Open account and start using app</p>
+
+        <a class="btn btn-lg btn-primary" href="{% url 'users:register' %}"
+        role="button">Register &raquo;</a>
+    </div>
+{% endblock page_header %}
